@@ -56,14 +56,14 @@ app.get('/user', (req, res) => {
 // Rota para salvar os arquivos
 app.post('/saveImage/products', function (req, res) {upload.single('file')(req, res, function (err) {
     if (err) {
-        return res.status(400).json({ auth : 'ok', message:'Erro ao salvar imagem, verifique se as extensões são: png,jpg,jpeg,jpg', status: '500'})
+        return res.status(500).json({ auth : 'ok', message:'Erro ao salvar imagem, verifique se as extensões são: png,jpg,jpeg,jpg'})
     }
     res.status(200).json({  auth : 'ok', message: 'Imagem salva com sucesso', image_id: req.file.filename.replace(/\.[^/.]+$/, "").replace(/\_[^/_]+$/, "")});
 })});
 
 app.post('/saveImage/users', function (req, res) {upload.single('file')(req, res, function (err) {
     if (err) {
-        return res.status(500).json({ auth : 'ok', message:'Erro ao salvar imagem, verifique se as extensões são: png,jpg,jpeg,jpg', status: '500' })
+        return res.status(500).json({ auth : 'ok', message:'Erro ao salvar imagem, verifique se as extensões são: png,jpg,jpeg,jpg'})
     }
     res.status(200).json({  auth : 'ok', message: 'Imagem salva com sucesso', image_id: req.file.filename.replace(/\.[^/.]+$/, "").replace(/\_[^/_]+$/, "")});
 })});
